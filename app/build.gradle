@@ -35,7 +35,6 @@ sonarRunner {
         property "sonar.login", props.getProperty("sonar.username")
         property "sonar.password", props.getProperty("sonar.password")
         properties["sonar.sources"] = android.sourceSets.main.java.srcDirs
-        properties["sonar.binaries"] = file("build/classes/debug")
 
         property "sonar.profile", "Android Lint with Sonargraph"
         property "sonar.projectKey", "mobilescg-android-sonartest-master-tryout-NIGHTLY"
