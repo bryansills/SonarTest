@@ -28,7 +28,7 @@ sonarRunner {
         }
 
         property "sonar.host.url", props.getProperty("host.url")
-        property "sonar.jdbc.url", props.getProperty("jbdc.url")
+        property "sonar.jdbc.url", props.getProperty("jdbc.url")
         property "sonar.jdbc.driverClassName", props.getProperty("jdbc.driverClassName")
         property "sonar.jdbc.username", props.getProperty("jdbc.username")
         property "sonar.jdbc.password", props.getProperty("jdbc.password")
