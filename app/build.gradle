@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'sonar-runner'
 
 android {
     compileSdkVersion 21
@@ -16,6 +17,32 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+}
+
+sonarRunner {
+    sonarProperties {
+        def props = new Properties()
+        file("sonar.properties").withInputStream {
+            stream -> props.load(stream)
+        }
+
+        property "sonar.host.url", props.getProperty("host.url")
+        property "sonar.jdbc.url", props.getProperty("jbdc.url")
+        property "sonar.jdbc.driverClassName", props.getProperty("jdbc.driverClassName")
+        property "sonar.jdbc.username", props.getProperty("jdbc.username")
+        property "sonar.jdbc.password", props.getProperty("jdbc.password")
+        property "sonar.login", props.getProperty("sonar.username")
+        property "sonar.password", props.getProperty("sonar.password")
+        properties["sonar.sources"] = android.sourceSets.main.java.srcDirs
+        properties["sonar.tests"] = android.sourceSets.instrumentTest.java.srcDirs
+        properties["sonar.binaries"] = file("build/classes/debug")
+        property "sonar.junit.reportsPath","build/instrumentTest-results/connected/"
+
+        property "sonar.profile", "Android Lint with Sonargraph"
+        property "sonar.projectKey", "mobilescg-android-sonartest-master-tryout-NIGHTLY"
+        property "sonar.projectName", "Bryan Sills SonarTest"
+        property "sonar.projectVersion", android.defaultConfig.versionName
     }
 }
 
