@@ -36,7 +36,7 @@ sonarRunner {
         property "sonar.password", props.getProperty("sonar.password")
         properties["sonar.sources"] = android.sourceSets.main.java.srcDirs
 
-        property "sonar.profile", "Android Lint with Sonargraph"
+        property "sonar.profile", "Android Lint"
         property "sonar.projectKey", "mobilescg-android-sonartest-master-tryout-NIGHTLY"
         property "sonar.projectName", "Bryan Sills SonarTest"
         property "sonar.projectVersion", android.defaultConfig.versionName
